@@ -5,6 +5,12 @@ import ContactList from './components/ContactList';
 import Pagination from './components/Pagination';
 import './App.css';
 
+// Create an Axios instance that points to your live backend URL when deployed.
+// It uses an empty string for local development to rely on the Vite proxy.
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL || ''
+});
+
 const App = () => {
     const [contacts, setContacts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -15,12 +21,13 @@ const App = () => {
     const fetchContacts = useCallback(async () => {
         setIsLoading(true);
         try {
-            const response = await axios.get(`/api/contacts?page=${currentPage}&limit=${contactsPerPage}`);
+            // Use 'api.get' instead of 'axios.get'
+            const response = await api.get(`/api/contacts?page=${currentPage}&limit=${contactsPerPage}`);
             setContacts(response.data.contacts);
             setTotalPages(Math.ceil(response.data.totalCount / contactsPerPage));
         } catch (error) {
             console.error('Error fetching contacts:', error);
-            alert('Failed to fetch contacts. Please try again.');
+            alert('Failed to fetch contacts. Check the console for more details.');
         } finally {
             setIsLoading(false);
         }
@@ -32,7 +39,8 @@ const App = () => {
 
     const handleAddContact = async (contactData) => {
         try {
-            await axios.post('/api/contacts', contactData);
+            // Use 'api.post' instead of 'axios.post'
+            await api.post('/api/contacts', contactData);
             if (currentPage !== 1) {
                 setCurrentPage(1);
             } else {
@@ -47,7 +55,8 @@ const App = () => {
 
     const handleDeleteContact = async (id) => {
         try {
-            await axios.delete(`/api/contacts/${id}`);
+            // Use 'api.delete' instead of 'axios.delete'
+            await api.delete(`/api/contacts/${id}`);
             if (contacts.length === 1 && currentPage > 1) {
                 setCurrentPage(currentPage - 1);
             } else {
