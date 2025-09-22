@@ -1,0 +1,181 @@
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --danger-color: #dc3545;
+  --danger-hover: #c82333;
+  --background-color: #f8f9fa;
+  --container-bg: #ffffff;
+  --text-color: #333;
+  --border-color: #dee2e6;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.main-content {
+  display: flex;
+  gap: 30px;
+}
+
+.card {
+  background-color: var(--container-bg);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+}
+
+.form-container {
+  flex: 1;
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.contact-form .error-message {
+  color: var(--danger-color);
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s;
+}
+
+.contact-form button:hover {
+  background-color: var(--primary-hover);
+}
+
+.list-container {
+  flex: 2;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item .info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-item .name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.contact-item .details {
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+.contact-item .delete-btn {
+  padding: 8px 12px;
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.contact-item .delete-btn:hover {
+  background-color: var(--danger-hover);
+}
+
+.loading,
+.no-contacts {
+  text-align: center;
+  padding: 20px;
+  color: #6c757d;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.pagination-controls .page-info {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  body {
+    padding: 10px;
+  }
+}
